@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<project name="PokemonDaTemu" default="jarfile">
+    <property name="project.name" value="PokemonDaTemu" />
+    <property name="src.dir" value="src/" />
+    <property name="main.class" value="io.codeforall.javatars.Server" />
+    <property name="build.dir" value="build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="lib.dir" value="lib" />
+    <property name="external.lib" value="${lib.dir}/prompt-view-0.2.1-SNAPSHOT.jar" />
+
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+    </target>
+
+    <target name="prepare" depends="init">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}">
+            <classpath>
+                <pathelement location="${external.lib}" />
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jarfile" depends="compile">
+        <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}" />
+                <attribute name="Class-Path" value="${external.lib}" />
+            </manifest>
+            <zipfileset src="${external.lib}"/>
+        </jar>
+    </target>
+
+    <!-- Define the clean target to clean up the project -->
+    <target name="clean">
+        <!-- Delete the build directory -->
+        <delete dir="${build.dir}" />
+    </target>
+
+</project>

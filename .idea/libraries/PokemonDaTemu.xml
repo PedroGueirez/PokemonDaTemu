@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PokemonDaTemu">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PokemonDaTemu/build/PokemonDaTemu.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
